@@ -28,14 +28,17 @@ menuItems.forEach((name, index) => {
 })
 
 alert(welcomeMessage)
-
-const orderName = prompt("Enter the name of the pizza you want to order today.")
-const orderPizza = menuItems.find((name) => {
-  return name.name === orderName
-})
-if (orderPizza) {
-  const orderQuantity = prompt(`How many of ${orderName} do you want?`)
-  alert(`Great, I'll get started on your ${orderName} right away, it will cost ${totalCost(orderQuantity, orderPizza.price)} kr. ${cookingTime(orderQuantity)}`)
-} else {
-  alert(`Sorry, ${orderName} is not on our menu!`)
+const orderBot = () => {
+  const orderName = prompt("Enter the name of the pizza you want to order today.")
+  const orderPizza = menuItems.find((name) => {
+    return name.name === orderName
+  })
+  if (orderPizza) {
+    const orderQuantity = prompt(`How many of ${orderName} do you want?`)
+    alert(`Great, I'll get started on your ${orderName} right away, it will cost ${totalCost(orderQuantity, orderPizza.price)} kr. ${cookingTime(orderQuantity)}`)
+  } else {
+    // alert(`Sorry, ${orderName} is not on our menu!`)
+    orderName = promt(`Sorry, ${orderName} is not on our menu! Please try typing your order again.)
+    orderBot()
+    }
 }
